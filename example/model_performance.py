@@ -119,7 +119,9 @@ def test(test_loader, net):
         pred_iris_edge_pil.save(os.path.join(Outer_Boundary_save_dir, image_name+'.png'))
   
         
-    state_dict = torch.load(os.path.join(test_args['checkpoints_path'], 'for_inner.pth'))
+    # state_dict = torch.load(os.path.join(test_args['checkpoints_path'], 'for_inner.pth'))
+    state_dict = torch.load(os.path.join(test_args['checkpoints_path'], 'for_outer.pth'), map_location=device)
+
     state_dict["module.heatmap4.loc.0.weight"] = state_dict.pop('module.loc4.loc.0.weight')
     state_dict["module.heatmap3.loc.0.weight"] = state_dict.pop('module.loc3.loc.0.weight')
     state_dict["module.heatmap2.loc.0.weight"] = state_dict.pop('module.loc2.loc.0.weight')
@@ -132,7 +134,8 @@ def test(test_loader, net):
 
         image_name, image = data['image_name'][0], data['image'] #BCHW
         print('testing the {}-th image: {}'.format(i+1, image_name))
-        image = Variable(image).cuda()
+        # image = Variable(image).cuda()
+        image = Variable(image).to(device)  # 使用 .to(device) 来适配当前设备
 
         with torch.no_grad():
             outputs = net(image)

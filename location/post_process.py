@@ -37,9 +37,9 @@ def get_edge(pred_masks):
         except:
             pass
 
-    pred_circle_masks = torch.tensor(pred_circle_masks).cuda()
-    pred_edges = torch.tensor(pred_edges).cuda()
-    ellipse_params = torch.tensor(ellipse_params).cuda()
+    # 移除 CUDA 转移，直接使用 CPU
+    pred_circle_masks = torch.tensor(pred_circle_masks)  # 默认在CPU上
+    pred_edges = torch.tensor(pred_edges)  # 默认在CPU上
+    ellipse_params = torch.tensor(ellipse_params)  # 默认在CPU上
     
     return pred_circle_masks, pred_edges, ellipse_params
-
