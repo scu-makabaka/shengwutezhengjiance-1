@@ -1,7 +1,7 @@
 import cv2
 
 # 读取四通道图像（RGBA）
-image = cv2.imread("./image.png", cv2.IMREAD_UNCHANGED)
+image = cv2.imread("./test/12.png", cv2.IMREAD_UNCHANGED)
 
 # 检查是否为四通道
 if image.shape[2] == 4:
