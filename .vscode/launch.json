@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "调试1.py文件",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "./example/mask_biou.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--dataset",
+                "CASIA-Iris-Africa",
+                "--ckpath",
+                "./submission_1-checkpoints/afc-checkpoints"
+            ]
+        },
+        {
+            "name": "调试model_performance.py文件",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "./example/model_performance.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--dataset",
+                "CASIA-Iris-Africa",
+                "--ckpath",
+                "./submission_1-checkpoints/afc-checkpoints"
+            ]
+        }
+
+    ]
+    
+}
